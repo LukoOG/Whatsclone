@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .container{
+        @apply relative w-[1390px] h-[calc(100vh-40px)] bg-teal-950 shadow-xl flex;
+    }
+    
+    /** header **/
+    .header{
+        @apply relative flex w-full h-[60px] bg-[#ededed] justify-between items-center
+        px-[15px] py-0
+    }
+
+    /** left container styling **/
+    .left-container{
+        @apply relative flex-[30%] bg-[#fff] border-r border-r-[rgba(0,0,0,0.2)];
+    }
+
+    /** header: search-chat **/
+    .search-chat{
+        @apply relative w-full py-0 px-[15px] h-[50px] bg-[#f6f6f6] flex justify-center items-center
+    }
+
+    .search-chat div {
+        @apply w-full
+    }
+
+    .search-chat input::placeholder{
+        @apply text-[#bbb]
+    }
+    .search-chat div input{
+        @apply w-full h-[38px] p-[6px] outline-none border-none bg-[#fff] rounded-[30px] text-[14px] pl-[40px]
+    }
+
+    .search-chat div ion-icon{
+        @apply absolute left-[30px] top-[14px] text-[1.2rem] 
+    }
+
+
+    /** chat-list **/
+    .chat-list{
+        @apply relative h-[calc(100%-110px)] /**60+50=110 asper the height of the other divs**/ overflow-y-auto
+    }
+
+    .chat-list .active{
+        @apply bg-[#ebebeb]
+    }
+
+    .chat-list .imgbx{
+        @apply relative min-w-[45px] h-[45px] mr-3 overflow-hidden rounded-[50%]
+    }
+
+    .chat-list .details{
+        @apply relative w-[100%] 
+    }
+
+    /** right container styling **/
+    .right-container{
+        @apply relative flex-[70%] bg-[#e5e5e5] 
+                before:content-none before:absolute before:top-0 before:bottom-0 before:w-full
+                before:opacity-[0.6]
+                before:h-full;
+    }
+
+    .imgText{
+        @apply relative flex justify-center items-center
+    }
+
+    .imgText h4{
+        @apply leading-[1.2em] font-[500] ml-[15px]
+    }
+
+    .imgText h4 span{
+        @apply text-[0.75em] text-[#777]
+    }
+
+    /** chatbox **/
+    .chat-box{
+        @apply relative w-full h-[calc(100%-120px)] p-[50px] overflow-y-auto
+    }
+
+    .message{
+        @apply relative flex w-full my-[5px] mx-0 
+    }
+
+    .message p{
+        @apply relative left-0 text-left max-w-[65%] p-[12px] bg-[#dcf8c6] rounded-xl text-[0.9em] 
+    }
+
+    .message p span{
+        @apply block mt-[5px] text-[0.65em] opacity-[8.5] 
+    }
+
+    .user_message{
+        @apply justify-end
+    }
+
+    .user_message p{
+         /** before:content-none before:absolute before:top-0 before:right-[-12px] before:w-5 before:h-5
+        before:gradi **/
+    }
+
+    ._message{
+        @apply justify-start
+    }
+
+    ._message p{
+        @apply bg-white text-left
+        /** before:content-none before:absolute before:top-0 before:right-[-12px] before:w-5 before:h-5 **/
+    }
+
+    /** chat form **/
+    .chat-form{
+        @apply relative w-full h-[60px] bg-[#f0f0f0] p-[15px] flex justify-between items-center
+    }
+    
+    .chat-form iconify-icon{
+        @apply cursor-pointer text-[1.8em] text-[#51585c] 
+    }
+
+    .chat-form iconify-icon:nth-child(1){
+        @apply mr-[15px]
+    }
+
+    .chat-form input{
+        @apply relative w-[90%] my-0 mx-[20px] py-[10px] px-[20px] rounded-3xl
+    }
+
+    .chat-form .textarea{
+        @apply relative w-[90%] my-0 mx-[20px] py-[10px] px-[20px] rounded-3xl
+    }
+
+    /**status box **/
+    .status-list{
+        @apply relative w-full h-full p-[50px] 
+    }
+}

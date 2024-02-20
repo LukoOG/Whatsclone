@@ -1,0 +1,51 @@
+the code for the carousel
+{#if $Post}
+<div class='h-full relative z-10 flex items-center flex-col justify-around'>
+    <div class="header">
+            <div class="imgText">
+                <div class="relative w-[40px] h-[40px] rounded-[50%] overflow-hidden">
+                    <img src={"http://"+backend_url+profile_pic} class="absolute top-0 left-0 h-full w-full object-cover" alt={$Post.profile}/>
+                </div>
+                <h4 class='text-[#000000]'><span>{status_time(time)}</span></h4>
+            </div>
+        </div>
+    {#each $Post as post, index (index)}
+        <!-- Display your post content here -->
+        <div class='{index === $activePost ? 'active' : 'inactive'}'>
+        <img class='mt-[calc(60px+10px)] h-[calc(70%-20px)] rounded-xl  z-20' src={"http://"+backend_url+post.media} alt={post.caption}/>
+        <p class='mt-[calc(60px+10px)] h-[calc(70%-20px)] rounded-xl  z-20'>{post.caption}</p>
+        </div>
+        <!-- Add any other post details as needed -->
+        
+    {/each}
+  
+    <!-- Buttons to navigate between posts -->
+    <button on:click={prevPost}>Previous</button>
+    <button on:click={nextPost}>Next</button>
+  </div>
+{/if}
+
+
+my former code
+<div class='h-full relative z-10 flex items-center flex-col justify-around'>
+    {#if $Post}
+        {#if fetching}
+            <div class="header absolute top-0">
+                <div class="imgText">
+                    <div class="relative w-[40px] h-[40px] rounded-[50%] overflow-hidden">
+                        <img src={"http://"+backend_url+$Post[0].profile_pic} class="absolute top-0 left-0 h-full w-full object-cover" alt={$Post.profile}/>
+                    </div>
+                    <h4 class='text-[#000000]'><span>{status_time($Post[0].time)}</span></h4>
+                </div>
+            </div>
+            <img class='mt-[calc(60px+10px)] h-[calc(70%-20px)] rounded-xl  z-20' src={url} alt={$Post[0].caption}/>
+            <!-- <svelte:element this{} /> gots find a way to check type of media  -->
+            <p class='h-[20px] text-[#0d1627cc]'>{$Post[0].caption}</p>
+        {:else if !fetching}
+            <div class=''><Spinner size={'12'} color={'green'}/></div>
+        {/if}
+    {:else}
+        <p class='text-[f2f3f5cc]'>View a post or make yours</p>
+        <!-- <button on:click={}>Post</button>  -->
+    {/if}
+</div>

@@ -1,0 +1,1 @@
+/** @type {import('./$types').PageLoad} */

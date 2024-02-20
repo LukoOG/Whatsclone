@@ -1,0 +1,45 @@
+sadly havent been documenting this project from the start
+start around 21st of June or so. This is 6th of August. And I've really come a long way
+#Just note that although I'm arraning it chronologically. This note started on 8/6/2023
+
+//4th August
+I decided to take my step to implent the offline and online status especially after noticing that django automatically helps us save a last_login attribute albeit only for the admin. I decided to take leverage of that. Made two functions, one each for offline and online to set it and return values when needed. The next and a little tricky part was doing so in order for other users connected to the websocket to see the change. 
+After some thinking. Just realized that each contact component when rendered sends the initial 'connection established' message. Decided to leverage this and also send the online status of the user, so the other end updates the 'online' attribute of the contact to true (the contact component on the other end's browser being "the user"). If online is true. It doesn't display the last_login attribute unless false.
+offline was a bit more tedios, as it required more events. Easier part was just implementing offline on logout as I called it on the +page.svelte onDestroy() so it always ran then. And sent the websocket message on onDestroy() in each contact. So the other end gets it.
+Aside that. As of 6th. I've only added an eventlister 'beforeunload' for when the user closes the tab. Closing the browser doesnt trigger lol. I'll just add that and it's game.
+As a bonus, also retrieved the 'date_joined' that django automatically saves and renders that on new_contact components instead of the online status.
+#6th August...just found out that it changes from date_joined to last_login after messaging a new contact since I used an if statement on Dm_id...Pros of being a good and neat coder :sunglasses:
+
+
+
+//6th August
+I started working on the user info form on the night of 5th. Surprisingly designed the form myself, I'm really getting better at css. Apart from that, with the little code I could salvage from svelte.dev on uploading images. I could better understand the process.
+// let fileReader = new FileReader()
+        // fileReader.readAsDataURL(image)
+        // fileReader.onloadend = (e: any) => {
+        //     img = e.target.result
+        //     // let res = await uploadFile()
+        //     //img = '/static/account/images/julianakarupe@gmail.com/carpe.jpg' //just testing...it works
+        //     //console.log(e)
+        // } legacy code lol. Works but client side specific
+It actually works. But it's for client side only processing. We also need to save the image at the backend. So after going through cool articles, and really understanding how it worked. I Was able to finish it at around 5pm the next day.
+I scraped that code for one that rather uses the actual url of the image returned from the backend. Rather than process the locally saved one. Either way I've found out two ways of approaching it. Interesting thing was figuring out how to send the image without a form. turns out I can just make the FormData() and append the necessary without a 'headers' in the fetch api request. Works really nice.
+
+Also worked the changing of name and bio. Really dope
+
+Messing with date objects and figuring out a way to implement date-checking!
+
+#Implement datechecking
+#Media posting...progress leads to more progress lol
+
+//7th August 12:30am
+Just wrapping up from last night. Attempted to and starting makeing the modal for posting media. Already designed and implented the logic to show media. Just need to make a way to post it. Also getting closer to nailing the "date-checking". Before I slept. It just hit me as there was no wifi. What if I tried registering. Yup! Already did the code to return the error with a try-except statement on send_email(). GN
+
+//2nd December
+Don't ask about the long hiatus. Just google how to save data after unloading components when capable
+
+11:31pm: Just finished implementing the basic features for the status. Next is improvemnt on UI and etc
+
+//5th December
+11:56am. Waiting for Alameen to play storm 4. Meanwhile been working on the status. Just finished implementing basic logic to show dates and to switch the status component backend
+will continue working on it tho. Next is basic logic to make posts and lastly when I get home. Use time stores to automatically delete posts that exceed 24hours
